@@ -1,0 +1,1 @@
+mvn -B archetype:generate -DgroupId=nagoya.code4 -DartifactId=lml -DarchetypeArtifactId=maven-archetype-quickstart
