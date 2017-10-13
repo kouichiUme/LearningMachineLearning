@@ -1,1 +1,9 @@
-mvn -B archetype:generate -DgroupId=nagoya.code4 -DartifactId=lml -DarchetypeArtifactId=maven-archetype-quickstart
+mvn -B archetype:generate -DgroupId=nagoya.code4 -DartifactId=yosiyosi-server -DarchetypeArtifactId=maven-archetype-quickstart
+
+
+# Run application locally on 8 cores
+./bin/spark-submit \
+  --class  nagoya.code4.App\
+  --master local[8] \
+  . \
+  100
