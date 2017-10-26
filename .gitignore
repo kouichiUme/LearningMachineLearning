@@ -1,2 +1,8 @@
 /.classpath
 /.project
+/spark-2.2.0-bin-hadoop2.7/
+/target/
+/metastore_db/
+/derby.log
+/timeline_20171022215618.csv
+/timeline_20171022231916.csv
