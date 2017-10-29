@@ -15,14 +15,14 @@ case class NobyChat( type3:Int,typeName:String,state:Int,comment:String,reply:St
 // fileからチャットデータを取り込み
 import org.apache.spark.rdd.RDD
 import java.text.SimpleDateFormat
-val nobyRDD : RDD[(Int,String,Int,String,String)] = sc.textFile("../../timeline_20171022231916.csv").
+val nobyRDD : RDD[(Int,String,Int,String,String)] = sc.textFile("../../timeline_clearhead.csv").
 map { line => 
 val dateFormat = new SimpleDateFormat("YYYY/MM/DD HH:mm")
  val words = line.split(",")
  // val hiduke 
- val type3 = words(2).toInt
+ val type3 = words(2).replaceAll("\"", "")	.toInt
  val typeName = words(3)
- val state = words(4).toInt
+ val state = words(4).replaceAll("\"", "")	.toInt
  val comment = words(5)
  val reply = words(6)
  ( type3 , typeName, state , comment, reply)
@@ -32,5 +32,5 @@ val dateFormat = new SimpleDateFormat("YYYY/MM/DD HH:mm")
  NobyChat (type3,typeName,state, comment,reply)}.toDF().cache()
  
  // 
- nobyRDD.foreach( row => println(s"${row}") )
+ nobyChatDF.rdd.foreach( row => println(s"${row.get(0)}") )
  
